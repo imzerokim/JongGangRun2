@@ -50,6 +50,8 @@ class Runner extends Subject {
       }
       this.isjump = true;
       console.log(this.runner.position.y);
+
+      console.log("aaaa");
       // if(this.runner.position.y>300)
       // this.runner.position.y = 300;
       
@@ -59,7 +61,7 @@ class Runner extends Subject {
       //     this.runner.velocity.y=0;
       //   }
       // }
-
+      //
         //gun의 shoot의 역할 life가 남아있으면 해당 사운드 플레이함
         //여기서는 러너가 움직이게 해야겠지...? 클릭 혹은 스페이스바 눌렀을때 액션하는걸 따로 빼야할까?
     //   if(mouseX<=800 && mouseY <=600){
