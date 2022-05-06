@@ -3368,7 +3368,7 @@ function SpriteAnimation(pInst) {
   * @type {Number}
   * @default 2
   */
-  this.frameDelay = 6;
+  this.frameDelay = 4;
 
   /**
   * True if the animation is currently playing.

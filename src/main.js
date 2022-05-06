@@ -7,6 +7,7 @@ import { Runner } from './Runner';
 let runner;
 let score;
 let targets = [];
+var gameOver;
 
 function setup() {
   var cnv = createCanvas(800, 600);
@@ -32,6 +33,7 @@ function draw() {
   line(30, 505, 770, 500);
   
   stroke(0);
+
   // for (let t of targets) t.draw();
   // requestAnimationFrame(byFrame);
   // clearRect(0,0,windowWidth,windowHeight);
@@ -53,9 +55,30 @@ function keyPressed() {
   }
 }
 
-// sketch.mousePressed = function(){
-//   console.log('here');
-// }
+function initTargets(){
+
+  //Unsubscribe previous targets
+  if(targets.length >0){
+    for(let t of targets){
+      runner.unsubscribe(t);
+    }
+  }
+
+  //create target
+  targets = TargetFactory.getInstance().getRandomTargets(
+    //target 조건들... 수정해야함
+    MAX_TARGETS,
+    TARGET_WIDTH,
+    height/2
+  );
+
+  //subscribe to events
+  targets.map((target) =>{
+    target.subscribe(score);
+    runner.subscribe(target);
+  });
+
+}
 
 window.setup = setup;
 window.draw = draw;
