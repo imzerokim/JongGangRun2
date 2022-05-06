@@ -14,9 +14,10 @@ class Runner extends Subject {
     //this.jumpSound = loadSound(jump),
     //this.hitSound = loadSound(hit),
       this.gravity = 1 ;
-      this.flap = -15;
+      this.flap = -12;
       this.ground_y = 350;
-      this.isjump = 0;
+      this.jump_count = 0;
+      this.touch = true;
       this.totLife =tot;
       this.reload()
     }
@@ -37,6 +38,8 @@ class Runner extends Subject {
         this.runner.velocity.y=0;
         this.gravity=0;
         this.isjump=0;
+        this.touch = true;
+        this.jump_count = 0;
       }
       imageMode(CENTER);
       drawSprites();
@@ -44,17 +47,8 @@ class Runner extends Subject {
     }
     jump(){
       this.gravity = 1 ;
-      this.isjump++;
-      if(this.isjump>0){
-        this.runner.velocity.y=this.flap;
-      }
-      else if(this.isjump>=2){
-        this.runner.velocity.y=0;
-      }
-      else{
-        this.isjump=0;
-      }
-      console.log(this.runner.position.y);
+      this.runner.velocity.y=this.flap;
+      
     }
     isHit(){
       if(this.runner.overlap()){

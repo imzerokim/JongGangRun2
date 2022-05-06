@@ -48,10 +48,28 @@ function mousePressed() {
   //console.log('jump');
 
 }
+
+function sleep(ms){
+  return new Promise(resolve => setTimeout(resolve,ms));
+}
+
 // Spacebar to jump
 function keyPressed() {
   if (key === ' ') {
-    runner.jump();
+    console.log(runner.jump_count);
+    if(runner.touch==false){
+      //runner.runner.velocity.y=0;
+      runner.gravity = 1;
+    }
+    else{
+      if(runner.jump_count<2){
+        runner.jump();
+      }
+      else{
+        runner.touch=false;
+      }
+    }
+    runner.jump_count++;
   }
 }
 
