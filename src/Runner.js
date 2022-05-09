@@ -8,7 +8,7 @@ import { Subject } from './Subject';
 class Runner extends Subject {
     constructor(tot){
       super();
-      this.runner = createSprite(150, 426, 100,100);
+      this.runner = createSprite(150, 426);
       this.runner.addAnimation("runner_gif",'data/run1.png','data/run2.png','data/run3.png','data/run4.png','data/run5.png','data/run6.png','data/run7.png','data/run6.png','data/run5.png','data/run4.png', 'data/run3.png','data/run2.png',);
       this.runner.scale=0.31;
     //this.jumpSound = loadSound(jump),
@@ -48,8 +48,8 @@ class Runner extends Subject {
     jump(){
       this.gravity = 1 ;
       this.runner.velocity.y=this.flap;
-      
     }
+    
     isHit(){
       if(this.runner.overlap()){
         if(this.remainingLife<=0){

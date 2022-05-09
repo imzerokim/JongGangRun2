@@ -2,12 +2,14 @@ import '../css/style.css';
 import { TOT_LIFE } from './Constants.js';
 import { ScoreDisplay } from './ScoreDisplay.js';
 import { Runner } from './Runner';
+import { Covid } from './Target';
 
 
 let runner;
 let score;
 let targets = [];
 var gameOver;
+let covid;
 
 function setup() {
   var cnv = createCanvas(800, 600);
@@ -18,6 +20,7 @@ function setup() {
   // 1. Init runner and score display
   runner = new Runner(TOT_LIFE);
   score = new ScoreDisplay(runner.getRemainingLife());
+  covid =  new Covid();
   
   // 2. Init the targets
   //initTargets(runner, score);
@@ -34,18 +37,29 @@ function draw() {
   
   stroke(0);
 
-  // for (let t of targets) t.draw();
-  // requestAnimationFrame(byFrame);
-  // clearRect(0,0,windowWidth,windowHeight);
+  for (let t of targets) t.draw();
   runner.draw();
   score.draw();
+  covid.draw();
 }
 
 
 // mouse press to jump
 function mousePressed() {
-  runner.jump();
-  //console.log('jump');
+  if (mousePressed) {
+    if(runner.touch==false){
+      runner.gravity = 1;
+    }
+    else{
+      if(runner.jump_count<2){
+        runner.jump();
+      }
+      else{
+        runner.touch=false;
+      }
+    }
+    runner.jump_count++;
+  }
 
 }
 
@@ -56,9 +70,7 @@ function sleep(ms){
 // Spacebar to jump
 function keyPressed() {
   if (key === ' ') {
-    console.log(runner.jump_count);
     if(runner.touch==false){
-      //runner.runner.velocity.y=0;
       runner.gravity = 1;
     }
     else{
