@@ -9,6 +9,8 @@ import kick from '../data/kick.mp3'
 import bar from '../data/startbar.png'
 import startimage from '../data/00.png'
 import checkpoint from '../data/checkpoint.png'
+import a_image from '../data/a.png'
+import restart from '../data/restart.png'
 const coin_delta_y = 40;
 const invincible_time = 600;
 let game_speed = 1;
@@ -25,6 +27,7 @@ let delete_coin;
 let coin_array, obstacle_array;
 let invincible =0;
 let pointsound, kicksound,startbar;
+let grade_a, restart_button;
 
 function setup() {
   //set canvas in center
@@ -48,8 +51,10 @@ function setup() {
   starter.scale=0.7;
   
   startbar = loadImage(bar);
-  start0 = loadImage(startimage)
-  seepoint = loadImage(checkpoint)
+  start0 = loadImage(startimage);
+  grade_a = loadImage(a_image);
+  restart_button = loadImage(restart);
+  seepoint = loadImage(checkpoint);
   pointsound= loadSound(point);
   kicksound=loadSound(kick);
   gameStage= 0;
@@ -57,7 +62,7 @@ function setup() {
 }
 
 function draw() {
-  if(gameOver==true && gameStage==0){
+  if(gameStage==0){
     clear();
     starter.visible=true;
     runner.runner.visible=false;
@@ -68,8 +73,8 @@ function draw() {
     drawSprites(); 
 
     imageMode(CENTER);
-    image(start0,400,230,677*0.83,170*0.83)
-    image(startbar,400,380,201,40)
+    image(start0,400,230,677*0.83,170*0.83);
+    image(startbar,400,380,201,40);
     
     //init runner, coin, obstacle, score
     life= TOT_LIFE;
@@ -80,19 +85,23 @@ function draw() {
     obstacle_array.forEach(e => {
       e.target.remove();
     })
-
     coin_array= new Array();
     obstacle_array = new Array();
-
     score = new ScoreDisplay(runner.getRemainingLife());
     if(mouseIsPressed && mouseX<=500&&mouseX>=300 &&mouseY>=360&&mouseY<=400){
       gameOver=false;
+      starter.visible=false;
+      clear();
+      gameStage=1;
     }
   }
-  if(!gameOver){
-    gameStage=1;
+  
+  if(gameStage==1){
+    background(250);
+    strokeWeight(3);
+    line(30, 505, 770, 500);
+    stroke(0);
     action = true;
-    starter.visible=false;
     runner.runner.visible=true;
     if(invincible>0){
       if(invincible==1){
@@ -102,10 +111,7 @@ function draw() {
       invincible--;
     }
 
-    background(250);
-    strokeWeight(3);
-    line(30, 505, 770, 500);
-    stroke(0);
+    
     runner.draw(); 
     
     if(invincible>0){
@@ -241,13 +247,7 @@ function draw() {
           runner.isHit();
           life--;
           if(life==0){
-            //when life become 0, game pause
-            setspeed(0);
-            imageMode(CENTER);
-            image(seepoint,400,300,201,40);
-            action = false;
-            gameOver= true;
-            frameCount = 0;
+            gameStage=2;
           }
           score.setLife(life);
           element.isCollisionChecked= true;
@@ -273,6 +273,36 @@ function draw() {
     imageMode(CENTER);
     drawSprites();
     score.draw();
+  }
+
+  if(gameStage==2){
+    setspeed(0);
+    imageMode(CENTER);
+    image(seepoint,400,300,201,40);
+    action = false;
+    gameOver= true;
+    frameCount = 0;
+    if(mouseIsPressed && mouseX<=500&&mouseX>=300 &&mouseY>=280&&mouseY<=320){
+      gameStage=3;
+    }
+  }
+  if(gameStage==3){
+    clear();
+    background(255);
+    // coin_array.forEach(e => {
+    //   e.target.remove();
+    // })
+    // obstacle_array.forEach(e => {
+    //   e.target.remove();
+    // })
+    //runner.runner.visible=false;
+
+    
+    noStroke();
+    
+    imageMode(CENTER);
+    image(grade_a,400,250,697*0.45,819*0.45);
+    image(restart_button,400,490,199*0.9,60*0.9);
   }
 }
 
