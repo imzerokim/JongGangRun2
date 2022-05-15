@@ -12,7 +12,6 @@ class Target extends Subject {
   }
   draw(){
     imageMode(CENTER);
-    
     if(this.direction >= -45){
       this.fly();
     }
@@ -22,7 +21,6 @@ class Target extends Subject {
     for(let a=0; a<25; a++){
       this.target.velocity.x =15+ a;
     }
-    
     this.target.rotation=10;
     this.direction++;
   }
@@ -127,4 +125,4 @@ class Soju extends Target {
   }
 }
 
-export { Target, Covid , Coin , Test, Soju, Computer, Hw, Quiz, Energy};
+export { Covid , Coin , Test, Soju, Computer, Hw, Quiz, Energy};

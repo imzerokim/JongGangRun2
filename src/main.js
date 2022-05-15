@@ -1,18 +1,11 @@
 import '../css/style.css';
 import { TOT_LIFE } from './Constants.js';
 import { ScoreDisplay } from './ScoreDisplay.js';
-import { Runner } from './Runner';
-import { Target, Covid , Coin , Test, Soju, Computer, Hw, Quiz, Energy } from './Target';
+import { Runner } from './Runner.js';
+import { Covid , Coin , Test, Soju, Computer, Hw, Quiz, Energy } from './Target.js';
 
 import point from '../data/point.mp3';
 import kick from '../data/kick.mp3'
-
-import startbar from '../data/startbar.png'
-import startimage from '../data/00.png'
-import checkpoint from '../data/checkpoint.png'
-import restart from '../data/restart.png'
-import gameoverimg from '../data/gameover.png'
-import title from '../data/title.png'
 
 const coin_delta_y = 40;
 const invincible_time = 600;
@@ -52,23 +45,24 @@ function setup() {
   gameStage= 0;
 
   // Image loading
-  startgame_img = loadImage(startbar);
-  start_background = loadImage(startimage);
-  title_img= loadImage(title);
+  startgame_img = loadImage('data/startbar.png');
+  start_background = loadImage('data/00.png');
+  title_img= loadImage('data/title.png');
 
   starter_img = createSprite(400,230,50,100);
   starter_img.addAnimation('run','data/1.png','data/1.png','data/1.png','data/2.png','data/2.png','data/3.png','data/3.png','data/4.png','data/4.png','data/5.png','data/5.png','data/6.png','data/6.png','data/7.png','data/7.png');
   starter_img.scale=0.7;
-
-  gameover_img = loadImage(gameoverimg);
-  check_point = loadImage(checkpoint);
-  restart_button = loadImage(restart);
+  
+  gameover_img = loadImage('data/gameover.png');
+  check_point = loadImage('data/checkpoint.png');
+  
   grade_aplus = loadImage('data/a+.png')
   grade_a = loadImage('data/a.png');
   grade_b = loadImage('data/b.png');
   grade_c = loadImage('data/c.png');
   grade_d = loadImage('data/d.png');
   grade_f = loadImage('data/f.png');
+  restart_button = loadImage('data/restart.png');
 
   //sound loading
   pointsound= loadSound(point);
@@ -94,11 +88,10 @@ function draw() {
     image(start_background,400,230,677*0.83,170*0.83);
     image(title_img,400,340,148*1.3,28*1.3);
     image(startgame_img,400,400,201*0.97,40*0.97);
-    
+    //mouse hover -> size bigger
     if(mouseX<=500&&mouseX>=300 &&mouseY>=380&&mouseY<=420){
       image(startgame_img,400,400,201,40);
     }
-
     //click start game button
     if(mouseIsPressed && mouseX<=500&&mouseX>=300 &&mouseY>=380&&mouseY<=420){
       starter_img.visible=false;
@@ -115,26 +108,24 @@ function draw() {
     strokeWeight(3);
     line(30, 505, 770, 500);
     stroke(0);
-    
+
     playing = true;
     checkframe+=1;
-    //runner size down
+    
     if(invincible>0){
+      //invincible time showing rect
+      fill(255,229,102);
+      strokeWeight(1);
+      stroke(41,162,229)
+      rect(240,28,invincible/(invincible_time/300),24,5);
       if(invincible==1){
+        //runner size down
         setspeed(2/3);
         runner.sizedown();
       }
       invincible--;
     }
-
-    //invincible time showing rect
-    if(invincible>0){
-      fill(255,229,102);
-      strokeWeight(1);
-      stroke(41,162,229)
-      rect(240,28,invincible/(invincible_time/300),24,5);
-    }
-
+    
     //create coin
     if (frameCount % (12/game_speed) == 0){
       let coin = new Coin(game_speed);
@@ -152,21 +143,21 @@ function draw() {
         let test = new Test(game_speed);
         obstacle_array.push(test);
         let length =coin_array.length;
-        coin_array[length - 1].target.position.y -= 1 * coin_delta_y;
-        coin_array[length - 2].target.position.y -= 2 * coin_delta_y-3;
-        coin_array[length - 3].target.position.y -= 3 * coin_delta_y-5;
-        coin_array[length - 4].target.position.y -= 2 * coin_delta_y-3;
-        coin_array[length - 5].target.position.y -= 1 * coin_delta_y;
+        coin_array[length - 1].target.position.y -= 1.4 * coin_delta_y;
+        coin_array[length - 2].target.position.y -= 3.2 * coin_delta_y-3;
+        coin_array[length - 3].target.position.y -= 4.5 * coin_delta_y-5;
+        coin_array[length - 4].target.position.y -= 3.2 * coin_delta_y-3;
+        coin_array[length - 5].target.position.y -= 1.4 * coin_delta_y;
       }
       if(number% 8 ==3){
         let soju = new Soju(game_speed);
         obstacle_array.push(soju);
         let length =coin_array.length;
-        coin_array[length - 1].target.position.y -= 1 * coin_delta_y;
-        coin_array[length - 2].target.position.y -= 2.3 * coin_delta_y-4;
-        coin_array[length - 3].target.position.y -= 3.2 * coin_delta_y-5;
-        coin_array[length - 4].target.position.y -= 2.3 * coin_delta_y-4;
-        coin_array[length - 5].target.position.y -= 1 * coin_delta_y;
+        coin_array[length - 1].target.position.y -= 1.8 * coin_delta_y;
+        coin_array[length - 2].target.position.y -= 3.9 * coin_delta_y-4;
+        coin_array[length - 3].target.position.y -= 5.3 * coin_delta_y-5;
+        coin_array[length - 4].target.position.y -= 3.9 * coin_delta_y-4;
+        coin_array[length - 5].target.position.y -= 1.8 * coin_delta_y;
       }
       if(number%8 == 4){
         let hw = new Hw(game_speed);
@@ -182,11 +173,11 @@ function draw() {
         obstacle_array.push(computer);
         let length =coin_array.length;
 
-        coin_array[length - 1].target.position.y -= 1 * coin_delta_y-2;
-        coin_array[length - 2].target.position.y -= 2.3 * coin_delta_y-5;
-        coin_array[length - 3].target.position.y -= 3.2 * coin_delta_y-10;
-        coin_array[length - 4].target.position.y -= 2.3 * coin_delta_y-5;
-        coin_array[length - 5].target.position.y -= 1 * coin_delta_y-2;
+        coin_array[length - 1].target.position.y -= 1.8 * coin_delta_y-2;
+        coin_array[length - 2].target.position.y -= 3.9 * coin_delta_y-5;
+        coin_array[length - 3].target.position.y -= 5.3 * coin_delta_y-10;
+        coin_array[length - 4].target.position.y -= 3.9 * coin_delta_y-5;
+        coin_array[length - 5].target.position.y -= 1.8 * coin_delta_y-2;
       }
       if(number%8 == 6){
         let qz = new Quiz(game_speed);
