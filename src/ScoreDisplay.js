@@ -28,7 +28,7 @@ class ScoreDisplay {
     
     strokeWeight(0);
     fill(0,0,0);
-    textFont('Spectral SC');
+    textFont('Roboto');
     textSize(FONT_SIZE);
 
     text(`${this.score}`,pointWidth+35, 45);
