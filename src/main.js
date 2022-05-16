@@ -124,7 +124,6 @@ class Stage0 extends StateMachine{
     if(mouseIsPressed && mouseX<=500&&mouseX>=300 &&mouseY>=380&&mouseY<=420){
       starter_img.visible=false;
       runner.runner.visible=true;
-      runner.runner.changeAnimation('run');
       setspeed(1);
       this.end_condition=true;
     }
@@ -173,7 +172,7 @@ class Stage1 extends StateMachine{
     }
 
     //create obstacle, energy by random number
-    if (frameCount % (60/game_speed) == 0 && this.checkframe>=60) {
+    if (frameCount % (60/game_speed) == 0 && this.checkframe>=90) {
       let number = Math.floor(random(1,1000));
       if(number%8 ==1){
         let covid = new Covid(game_speed);
@@ -228,7 +227,7 @@ class Stage1 extends StateMachine{
         coin_array[length - 3].target.position.y -= 2.8 * COIN_DELTA_Y-15;
         coin_array[length - 4].target.position.y -= 1.5 * COIN_DELTA_Y-1;
       }
-      if(number %8 ==7 && this.invincible==0 && frameCount % 180==0){
+      if(number %8 ==7 && this.invincible==0 && frameCount % 120==0){
         let energy = new Energy(game_speed);
         obstacle_array.push(energy);
       }
