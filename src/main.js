@@ -92,10 +92,6 @@ class StateMachine {
   constructor(){
     this.end_condition=false;
   }
-  execute(){
-  }
-  nextStep(){
-  }
 }
 
 class Stage0 extends StateMachine{
@@ -144,14 +140,12 @@ class Stage1 extends StateMachine{
     this.stage=1;
     this.invincible=0;
     this.checkframe=0;
-    
   }
   execute(){
     runner.runner.changeAnimation('run');
     background(255);
-    this.playing = true;
     this.checkframe+=1;
-    console.log(this.checkframe);
+
     if(this.invincible>0){
       //changing background color
       background(250-this.invincible/(INVINCIBLE_TIME/184),250-this.invincible/(INVINCIBLE_TIME/7),250-this.invincible/(INVINCIBLE_TIME/141));
@@ -336,8 +330,6 @@ class Stage1 extends StateMachine{
 }
 class Stage2 extends StateMachine{
   execute(){
-    // playing = false;
-
     imageMode(CENTER);
     image(check_point,400,300,201*0.97,40*0.97);
     image(gameover_img,400,240,130*1.2,30*1.2);
@@ -395,7 +387,7 @@ class Stage3 extends StateMachine{
     }
   }
   nextStep(){
-    return new Stage1();
+    return new Stage0();
   }
 }
 

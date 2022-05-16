@@ -35,8 +35,7 @@ class ScoreDisplay {
     
   }
   update(source, ...others){
-    //if(source=='left_life')
-      this.setLife(others[0]);
+    this.setLife(others[0]);
     if(source=='score'){
       this.addScore(others[0]);
     }

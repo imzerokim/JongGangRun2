@@ -105,9 +105,9 @@ class Computer extends Target {
     this.target.changeAnimation('pass');
     this.target.position.x= 965;
     this.target.position.y=480;
-    this.name="computer";
     this.animation_velocity=0;
     this.animation_direction=1;
+    this.name="computer";
   }
 }
 class Soju extends Target {
