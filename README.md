@@ -34,11 +34,11 @@ If so, you can get a good grade!
 
 
 >Introducing Characters In Game
-<img src="data/run1.png", height="100x", width="100px">
+
 | Name | Image | Detail | motion |
 | :----: | :------: | :------: | :------: |
-| Runner | <img src="data/run1.png", height="100x", width="100px"> | The main character of the game | Runner moves its arm and leg! |
-| Random quiz | ![character](data/quiz.png) | Makes many students terrified | It falls down to the ground |
+| Runner | <img src="data/run1.png" width="16*10" height="26*10"> | The main character of the game | Runner moves its arm and leg! |
+| Random quiz | <img src="data/quiz.png" width="16*10" height="26*10"> | Makes many students terrified | It falls down to the ground |
 | Bunch of assignment | ![character](data/hw.png) | One reason why many Students can't sleep | no extra motion |
 | COVID 19 | ![character](data/COVID.png) | If you get COVID you might fall behind... | It rotates and rolls in a fast speed |
 | Laptop with Blue screen| ![character](data/computer.png) | Laptop with blue screen is scarier than any other horror movie | It blinks with a blue screen |
