@@ -85,6 +85,9 @@ The GUI looks like this.
 This is my UML.
 ![UML](data/UML.png)
 
+This is a breif diagram
+![diagram](data/diagram.png)
+
 ### Key Class
   >`Class StateMachine`
   - This class is in main.js
