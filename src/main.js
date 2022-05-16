@@ -139,9 +139,9 @@ class Stage1 extends StateMachine{
     this.stage=1;
     this.invincible=0;
     this.checkframe=0;
+    runner.runner.changeAnimation('run');
   }
   execute(){
-    runner.runner.changeAnimation('run');
     background(255);
     this.checkframe+=1;
 
