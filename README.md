@@ -25,6 +25,13 @@ A lot of obstacles such as exams and assignments, make students hard to finish t
   - You can kick off the obstacles!
 - Runner can earn `points` (10 points for each coin)
   - Depending on the point score, runner gets grade (From A+ to F)
+    - If point is
+      - less than 1000 → F
+      - more than 1000, less than 3000 → D
+      - more than 3000, less than 6000 → C
+      - more than 6000, less than 7000 → B
+      - more than 7000, less than 8000 → A
+      - more than 8000 → A+
 
 >How To win 😊
 
@@ -36,9 +43,10 @@ A lot of obstacles such as exams and assignments, make students hard to finish t
 
 ### Introducing Characters In Game
 
+
 | Name | Image | Detail | motion |
 | :----: | :------: | :------: | :------: |
-| **Runner** | <img src="data/run1.png" width="100" height="150"> | The main character of the game | Runner moves its arm and leg! |
+| **Runner** | <img src="data/run1.png" width="100" height="130"> | The main character of the game | Runner moves its arm and leg! |
 | **Random quiz** | <img src="data/quiz.png" width="68" height="84"> | Makes many students terrified | It falls down to the ground |
 | **Bunch of assignment** | <img src="data/hw.png" width="68" height="60"> | One reason why many Students can't sleep | no extra motion |
 | **COVID 19** | <img src="data/COVID.png" width="50" height="53"> | If you get COVID you might fall behind... | It rotates and rolls in a fast speed |
@@ -49,118 +57,78 @@ A lot of obstacles such as exams and assignments, make students hard to finish t
 
 ## How it works
 
-- `npm run dev` - Starts the development server at port [3000](http://localhost:3000/)
-- `npm run build` - Builds the application in a `dist` folder
-- `npm run preview` - Serves the build files (`dist` folder) locally at port [5000](http://localhost:3000/)
+`jump`
+  - When jump, I used animation.stop() to hold the animation.
+  - Adjusted velocity up and down to make it look like it's falling with Gravity.
+    - gravity=1, flap =16
+    - Initial valuse of velocity is 0. When `jump`, velocity= flap, and gravity is added until the runner touch the ground.
+    - Since it works with frame, sometimes it can get lower than the ground, so I also adjust the position of y, and make the velocity 0, make animation play()
+    - checked jump_count to make it possible unitl twice
+`Create Obstacle`
+  - Create random obstacle in every 60 frame
+  - Adjust the postion of coin in coin_array to make the coin be above the obstacle
+  - Added unique motions for each obstacle
 
-Note that if after this last command you do not see anything, you can use instead this other command:
+`Become Invincible`
+  - When runner overlap the 'energy'
+    - it works for 600 frame.
+      - Speed become 1.5 x faster
+      - Size 1.25 x bigger
+        - Adjust the position again
+      - Background color changes
+        - From green to white
+      - Add bar graph to show the left time
+      - It kicks obstacle and does not lose life
+        - obstacle moves from left to right with some rotation. (used velocity x,y)
+  
 
-- `npm run preview --host` - You should then be able to see your files locally at port [5000](http://localhost:3000/)
+## Detail description about Code
 
-## A single p5.js sketch
+This is my UML.
 
-```js
-import '../css/style.css';
-import { sketch } from 'p5js-wrapper';
+### Key Class
+  `Class StateMachine`
+  - This class is in main.js
+  - I used State Machine Pattern to divide the stages in game.
+  - It is called in draw() and returns the next stage
+  - It has 4 stages in Total
+    - Stage 0: Game starting page
+    - Stage 1: Game playing page
+    - Stage 2: Gmae play end. Pause and show `checkpoint` button
+    - Stage 3: Show the points and grade
+  
+  `Class Runner`
+  - This class is for the character `runner`
+  - Define properties of runner using p5.play
+  - Create functions
+    - size up()/down()
+    - jump() :
+    - isHit() : Change animation
+  `Class Target`
+  - This class is for adding properties of characters except runner.
+  - 
+  `Class ScoreDisplay`
+  - This class draws the `point` and `Life`
+  - It is keep updated by the observer
 
-sketch.setup = function () {
-  createCanvas(800, 600);
-};
 
-sketch.draw = function () {
-  background(127); // grey
-  fill(255, 0, 0); // red
-  noStroke();
-  rectMode(CENTER);
-  rect(width / 2, height / 2, 50, 50);
-};
+I used p5.play to make detailed motions, such as running or changing frames. Also, I used to check collision and overlaping.
 
-sketch.mousePressed = function () {
-  console.log(`I am here at ${mouseX}:${mouseY}`);
-};
-```
-
-And here the body of the html file:
-
-```html
-<body>
-  <script type="module" src="/src/single_sketch.js"></script>
-</body>
-```
-
-## Multiple p5.js sketches
-
-If you want to use multiple sketches, you need to use a different syntax.
-
-```js
-import '../css/style.css';
-import { p5 } from 'p5js-wrapper';
-
-let sketch1 = new p5((p) => {
-  p.setup = () => {
-    const one = document.getElementById('one');
-    p.createCanvas(one.clientWidth, one.clientHeight);
-  };
-
-  p.draw = () => {
-    p.background(100);
-  };
-}, 'one');
-
-// Sketch2
-let sketch2 = new p5((p) => {
-  p.setup = () => {
-    const two = document.getElementById('two');
-    p.createCanvas(two.clientWidth, two.clientHeight);
-  };
-
-  p.draw = () => {
-    p.background(170);
-  };
-}, 'two');
-```
-
-This file is expecting two divs in the html file:
-
-```html
-<body>
-  <script type="module" src="/src/multi_sketch.js"></script>
-  <div id="one"></div>
-  <div id="two"></div>
-</body>
-```
-
-## Adding sound
-
-Sound is an [experimental feature](https://github.com/makinteract/p5js-wrapper/blob/main/README_SOUND.md).
-
-Examples usage:
+This example shows how I defined the properties using p5.play.
 
 ```js
-import { sketch } from 'p5js-wrapper';
-import 'p5js-wrapper/sound';
-
-import mysound from './mysound.mp3';
-
-let soundEffect;
-
-sketch.setup = function () {
-  createCanvas(100, 100);
-  soundEffect = loadSound(mysound);
-};
-
-sketch.draw = function () {
-  background('#eeeeee');
-};
-
-// Play sound on click
-sketch.mousePressed = function () {
-  soundEffect.play();
-};
+class Coin extends Target {
+  constructor(velocity){
+      super(velocity);
+      this.target.addAnimation("coin_img",'data/coin.png');
+      this.target.setCollider('circle', 0,0,60);
+      this.target.position.x= 1112;
+      this.target.position.y=480;
+  }
+}
 ```
 
-This example assumes you have a file _mysound.mp3_ in the _src_ folder.
+**I drawed every sketch used in this game. **
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
+## Acknowledge any help
+- I used p5.play library. I got help from examples in p5.play
