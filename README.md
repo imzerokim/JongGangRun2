@@ -119,28 +119,32 @@ I especially used these features.
    ```
 
 2. State Machine
-  ```js   
-  function draw() {
-    current_state.execute();
-    if(current_state.end_condition) {
-      current_state = current_state.nextStep();
+   
+    ```js   
+    function draw() {
+      current_state.execute();
+      if(current_state.end_condition) {
+        current_state = current_state.nextStep();
+      }
     }
-  }
-  ```
+    ```  
 
 3. Observer
+   
    ```js   
-  update(source, ...others){
-    this.setLife(others[0]);
-    if(source=='score'){
-      this.addScore(others[0]);
-    }
+    update(source, ...others){
+      this.setLife(others[0]);
+      if(source=='score'){
+        this.addScore(others[0]);
+      }
     ```
+
 
 
 4. **p5.play library** 
    - To make detailed motions, such as running or changing frames. 
    - To check collision and overlaping.
+
 
 
     This example shows how I defined the properties using p5.play.
