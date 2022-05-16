@@ -17,6 +17,7 @@ class Target extends Subject {
     }
   }
   fly(){
+    //make obstacle kicked / fly
     this.target.velocity.y=-20;
     for(let a=0; a<25; a++){
       this.target.velocity.x =15+ a;
@@ -25,6 +26,7 @@ class Target extends Subject {
     this.direction++;
   }
   kick() {
+    //when obstacle is overlapped
     this.direction = -45;
   }
 }
@@ -33,9 +35,9 @@ class Energy extends Target {
   constructor(v){
       super(v);
       this.target.addAnimation('energy','data/energy.png','data/energy2.png','data/energy2.png','data/energy.png');
+      this.target.scale=0.13;
       this.target.position.x= 1112;
       this.target.position.y=450;
-      this.target.scale=0.13;
       this.name="energy";
       this.s=0;
       this.z=1;
@@ -95,9 +97,9 @@ class Hw extends Target {
     this.target.addAnimation('pass','data/hw.png');
     this.target.addAnimation('hit','data/hw.png','data/redhw.png','data/redhw.png','data/hw.png');
     this.target.changeAnimation('pass');
+    this.target.scale=0.09;
     this.target.position.x= 960;
     this.target.position.y= 485;
-    this.target.scale=0.09;
   }
 }
 class Computer extends Target {
@@ -106,11 +108,11 @@ class Computer extends Target {
     this.target.addAnimation('pass','data/computer.png','data/computer.png','data/cp2.png','data/computer.png','data/computer.png');
     this.target.addAnimation('hit','data/computer.png','data/redcp.png','data/redcp.png','data/computer.png');
     this.target.changeAnimation('pass');
-    this.name="computer";
     this.target.position.x= 965;
     this.target.position.y=480;
-    this.s=0;
-    this.z=1;
+    this.name="computer";
+    this.animation_velocity=0;
+    this.animation_direction=1;
   }
 }
 class Soju extends Target {
@@ -119,9 +121,9 @@ class Soju extends Target {
     this.target.addAnimation('pass','data/Soju.png','data/Soju0.png','data/Soju.png');
     this.target.addAnimation('hit','data/Soju.png','data/redsoju.png','data/redsoju.png','data/Soju.png');
     this.target.changeAnimation('pass');
+    this.target.scale=0.12;
     this.target.position.x= 965;
     this.target.position.y=490;
-    this.target.scale=0.12;
   }
 }
 

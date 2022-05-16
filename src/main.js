@@ -75,10 +75,11 @@ function draw() {
   if(gameStage==0){
     //initialize
     init();
+
     starter_img.visible=true;
     runner.runner.visible=false;
-
     background(250);
+
     //running animation
     starter_img.animation.play();
     drawSprites(); 
@@ -105,18 +106,16 @@ function draw() {
   // game stage 1: Game Playing Page
   if(gameStage==1){
     background(255);
-    strokeWeight(3);
-    line(30, 505, 770, 500);
-    stroke(0);
-
     playing = true;
     checkframe+=1;
     
     if(invincible>0){
+      //changing background color
+      background(250-invincible/(invincible_time/184),250-invincible/(invincible_time/7),250-invincible/(invincible_time/141));
       //invincible time showing rect
-      fill(255,229,102);
       strokeWeight(1);
-      stroke(41,162,229)
+      stroke(41,162,229);
+      fill(255,229,102);
       rect(240,28,invincible/(invincible_time/300),24,5);
       if(invincible==1){
         //runner size down
@@ -125,6 +124,11 @@ function draw() {
       }
       invincible--;
     }
+    
+    //draw ground line
+    stroke(0);
+    strokeWeight(3);
+    line(30, 505, 770, 500);
     
     //create coin
     if (frameCount % (12/game_speed) == 0){
@@ -229,14 +233,14 @@ function draw() {
         element.target.rotation -=8;  
       }
       if(element.name === "computer"){
-        element.s+= 2* element.z;
-        if(element.s>6){
-          element.z=-1
+        element.animation_velocity+= 2* element.animation_direction;
+        if(element.animation_velocity>6){
+          element.animation_direction=-1
         }
-        else if(element.s<-6){
-          element.z=1;
+        else if(element.animation_velocity<-6){
+          element.animation_direction=1;
         }
-        element.target.velocity.y = element.s;
+        element.target.velocity.y = element.animation_velocity;
       }
       if(runner.runner.overlap(element.target) && element.isCollisionChecked==false){
         if(element.name === "energy"){
@@ -304,19 +308,19 @@ function draw() {
     
     //grade display
     let final_score = score.score;
-    if(final_score >10000){
+    if(final_score >8000){
       image(grade_aplus,400,250,697*0.45,819*0.45);
     }
-    else if(final_score >8000){
+    else if(final_score >7000){
       image(grade_a,400,250,697*0.45,819*0.45);
     }
     else if(final_score >6000){
       image(grade_b,400,250,697*0.45,819*0.45);
     }
-    else if(final_score >4000){
+    else if(final_score >3000){
       image(grade_c,400,250,697*0.45,819*0.45);
     }
-    else if(final_score >3000){
+    else if(final_score >1000){
       image(grade_d,400,250,697*0.45,819*0.45);
     }
     else{
@@ -362,12 +366,20 @@ function keyPressed() {
 }
 
 function init(){
+  clear();
   life= TOT_LIFE;
-  // runner = new Runner(life);  
+  
+  coin_array.forEach((element) =>
+    element.target.remove()
+  );
+  obstacle_array.forEach((element) =>
+    element.target.remove()
+  );  
   coin_array= new Array();
   obstacle_array = new Array();
   delete_coin = new Array();
   score = new ScoreDisplay(runner.getRemainingLife());
+
 }
 
 function setspeed(n){
