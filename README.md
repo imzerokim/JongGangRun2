@@ -26,24 +26,24 @@ A lot of obstacles such as exams and assignments, make students hard to finish t
 - Runner can earn `points` (10 points for each coin)
   - Depending on the point score, runner gets grade (From A+ to F)
 
-### **How To win 😊**
+>How To win 😊
 
-Earn as many points as you can before you lose all of your `life`!
+  Earn as many points as you can before you lose all of your `life`!
 
-If so, you can get a good grade!
+  If so, you can get a good grade!
 
 
 
->Introducing Characters In Game
+### Introducing Characters In Game
 
 | Name | Image | Detail | motion |
 | :----: | :------: | :------: | :------: |
-| **Runner** | <img src="data/run1.png" width="100" height="110"> | The main character of the game | Runner moves its arm and leg! |
+| **Runner** | <img src="data/run1.png" width="100" height="150"> | The main character of the game | Runner moves its arm and leg! |
 | **Random quiz** | <img src="data/quiz.png" width="68" height="84"> | Makes many students terrified | It falls down to the ground |
 | **Bunch of assignment** | <img src="data/hw.png" width="68" height="60"> | One reason why many Students can't sleep | no extra motion |
 | **COVID 19** | <img src="data/COVID.png" width="50" height="53"> | If you get COVID you might fall behind... | It rotates and rolls in a fast speed |
-| **Laptop with Blue screen**| <img src="data/computer.png" width="78" height="55"> | Laptop with blue screen is scarier than any other horror movie | It blinks with a blue screen |
-| **Endless Exam** | <img src="data/test.png" width="80" height="50"> | This makes a lot of students cry... | Exam contexts is written |
+| **Laptop with Blue screen**| <img src="data/computer.png" width="78" height="85"> | Laptop with blue screen is scarier than any other horror movie | It blinks with a blue screen |
+| **Endless Exam** | <img src="data/test.png" width="80" height="80"> | This makes a lot of students cry... | Exam contexts is written |
 | **Soju** | <img src="data/soju.png" width="68" height="84"> | It makes you forget the reality for some times, but also gives a terrible hangover | It looks attractive... it's size varies |
 | **Energy Drink** | <img src="data/energy.png" width="40" height="70"> | This will boost your enrgy and you can be invincible for a bit | It blinks to attract you! |
 
