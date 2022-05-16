@@ -57,7 +57,7 @@ A lot of obstacles such as exams and assignments, make students hard to finish t
 
 ## How it works
 This is my UML.
-<img src="data/UML.png" width="191" height="92.5">
+![UML](data/UML.png)
 
 ### Key Class
   `Class StateMachine`
