@@ -1,28 +1,46 @@
 # JongGangRun Game Document 🚀
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+>**Name:** Nayeong Kim
+>**Student ID:** 20180057
+>**Repository URL:** [Project 1 Link](http://git.prototyping.id/20180057/project1)
 
-[Vite](https://vitejs.dev/) starter template to scaffold a new [p5.js](https://p5js.org) project.
 
-This is an unopinionated template; aside from P5.js and Vite, the rest of your project's tools are entirely up to you.
+## Game Description 
+The game ‘JongGangRun’ is for college students who wish to finish their semester as fast as possible.
 
-## Live demo
+A lot of obstacles such as exams and assignments, make students hard to finish their semester. How about playing games instead? You can quickly finish your semester by jumping over the obstacles and get see your grade right away!
 
-For a live demo please [visit this page](https://p5js-vite-demo.surge.sh).
+## Game Rule
+The basic rule of this game.
 
-## Installation
+- Runner have 4 `life`.
+- Runner can jump by pressing `mouse` or `space bar`
+  - You can jump once, and jump twice!
+- Runner must avoid various `obstacles` (6 obstacle in total)
+  - When Runner hits `obstacle`, runner lose one `life`. 
+  - When `life` become zero, game ends immediately.
+- Runner can be invincible by drinking `EnergyDrink` (lasts for 10 seconds)
+  - You can kick off the obstacles!
+- Runner can earn `points` (10 points for each coin)
+  - Depending on the point score, runner gets grade (From A+ to F)
 
-Pull the template files with [degit](https://github.com/Rich-Harris/degit) and install dependencies.
+**How To win 😊**
+**Earn as many points** as you can before you lose all of your `life`!
+If so, you can get a good grade!
 
-```
-npx degit makinteract/p5js-vite my-project
+>Introducing Obstacles
+| Name | Image | Detail | motion |
+| :----: | :------: | :------: | :------: |
+| Runner | ![character](data/run1.png) | The main character of the game | Runner walks and somtimes run! |
+| Random quiz | ![character](data/quiz.png) | Makes many students terrified | It falls down to the ground |
+| Bunch of assignment | ![character](data/hw.png) | One reason why many Students can't sleep | no extra motion |
+| COVID 19 | ![character](data/COVID.png) | If you get COVID you might fall behind... | It rotates and rolls in a fast speed |
+| Laptop with Blue screen| ![character](data/computer.png.png) | Laptop with blue screen is scarier than any other horror movie | It blinks with a blue screen |
+| Endless Exam | ![character](data/test.png) | This makes a lot of students cry... | Exam contexts is written |
+| Soju | ![character](data/soju.png) | It makes you forget the reality for some times, but also gives a terrible hangover | It looks attractive... it's size varies |
+| Energy Drink | ![character](data/energy.png) | This will boost your enrgy and you can be invincible for a bit | It blinks to attract you! |
 
-cd my-project
-npm install
-npm run dev
-```
-
-## npm scripts
+## How it works
 
 - `npm run dev` - Starts the development server at port [3000](http://localhost:3000/)
 - `npm run build` - Builds the application in a `dist` folder
