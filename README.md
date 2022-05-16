@@ -1,19 +1,20 @@
 # JongGangRun Game Document 🚀
+## PROJECT 1 - Software Prototyping ID311
 
->**Name:** Nayeong Kim
+- **Name:** Nayeong Kim
 
->**Student ID:** 20180057
+- **Student ID:** 20180057
 
->**Repository URL:** [Project 1 Link](http://git.prototyping.id/20180057/project1)
+- **Repository URL:** [Project 1 Link](http://git.prototyping.id/20180057/project1)
 
 
 ## Game Description 
-The game ‘**JongGangRun**’ is for college students who wish to finish their semester as fast as possible.
+The game ‘**JongGangRun(종강런)**’ is for college students who wish to finish their semester as fast as possible.
 
 A lot of obstacles such as exams and assignments, make students hard to finish their semester. How about playing games instead? You can quickly finish your semester by jumping over the obstacles and can see your grade, right away!
 
 ## Game Rule
-> The basic rule of this game.
+> Basic rule of this game.
 
 - Runner have 4 `life`.
 - Runner can jump by pressing `mouse` or `space bar`
@@ -89,27 +90,59 @@ This is my UML.
   - It is keep updated by the observer
 
 
+### Implementation
+I especially used these features.
 
-I used **p5.play library** to make detailed motions, such as running or changing frames. Also, I used to check collision and overlaping.
+1. Class & Object (OOP)
+   
+   ```js
+   class Coin extends Target {
+   // ...
+   ```
 
-This example shows how I defined the properties using p5.play.
-
-```js
-class Coin extends Target {
-  constructor(velocity){
-      super(velocity);
-      this.target.addAnimation("coin_img",'data/coin.png');
-      this.target.setCollider('circle', 0,0,60);
-      this.target.position.x= 1112;
-      this.target.position.y=480;
+2. State Machine
+  ```js   
+  function draw() {
+    current_state.execute();
+    if(current_state.end_condition) {
+      current_state = current_state.nextStep();
+    }
   }
-}
-```
+  ```
+
+3. Observer
+   ```js   
+  update(source, ...others){
+    this.setLife(others[0]);
+    if(source=='score'){
+      this.addScore(others[0]);
+    }
+    ```
+
+
+4. **p5.play library** 
+   - To make detailed motions, such as running or changing frames. 
+   - To check collision and overlaping.
+
+
+    This example shows how I defined the properties using p5.play.
+
+    ```js
+    class Coin extends Target {
+      constructor(velocity){
+          super(velocity);
+          this.target.addAnimation("coin_img",'data/coin.png');
+          this.target.setCollider('circle', 0,0,60);
+          this.target.position.x= 1112;
+          this.target.position.y=480;
+      }
+    }
+    ```
 
 
 ## Detail description about Code: Challenging part
 
-`Jumping`
+>`Jumping`
   - When jump, I used animation.stop() to hold the animation.
   - Adjusted velocity up and down to make it look like it's falling with Gravity.
     - gravity=1, flap =16
@@ -117,12 +150,12 @@ class Coin extends Target {
     - Since it works with frame, sometimes it can get lower than the ground, so I also adjust the position of y, and make the velocity 0, make animation play()
     - checked jump_count to make it possible unitl twice
   
-`Create Obstacle`
+>`Create Obstacle`
   - Create random obstacle in every 60 frame
   - Adjust the postion of coin in coin_array to make the coin be above the obstacle
   - Added unique motions for each obstacle
 
-`Become Invincible`
+>`Become Invincible`
   - When runner overlap the 'energy'
   - It works for 600 frame.
 
