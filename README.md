@@ -56,35 +56,8 @@ A lot of obstacles such as exams and assignments, make students hard to finish t
 | **Energy Drink** | <img src="data/energy.png" width="40" height="70"> | This will boost your enrgy and you can be invincible for a bit | It blinks to attract you! |
 
 ## How it works
-
-`jump`
-  - When jump, I used animation.stop() to hold the animation.
-  - Adjusted velocity up and down to make it look like it's falling with Gravity.
-    - gravity=1, flap =16
-    - Initial valuse of velocity is 0. When `jump`, velocity= flap, and gravity is added until the runner touch the ground.
-    - Since it works with frame, sometimes it can get lower than the ground, so I also adjust the position of y, and make the velocity 0, make animation play()
-    - checked jump_count to make it possible unitl twice
-`Create Obstacle`
-  - Create random obstacle in every 60 frame
-  - Adjust the postion of coin in coin_array to make the coin be above the obstacle
-  - Added unique motions for each obstacle
-
-`Become Invincible`
-  - When runner overlap the 'energy'
-    - it works for 600 frame.
-      - Speed become 1.5 x faster
-      - Size 1.25 x bigger
-        - Adjust the position again
-      - Background color changes
-        - From green to white
-      - Add bar graph to show the left time
-      - It kicks obstacle and does not lose life
-        - obstacle moves from left to right with some rotation. (used velocity x,y)
-  
-
-## Detail description about Code
-
 This is my UML.
+<img src="data/UML.png" width="191" height="92.5">
 
 ### Key Class
   `Class StateMachine`
@@ -104,9 +77,10 @@ This is my UML.
     - size up()/down()
     - jump() :
     - isHit() : Change animation
+  
   `Class Target`
   - This class is for adding properties of characters except runner.
-  - 
+  
   `Class ScoreDisplay`
   - This class draws the `point` and `Life`
   - It is keep updated by the observer
@@ -128,7 +102,38 @@ class Coin extends Target {
 }
 ```
 
-**I drawed every illust used in this game.**
+
+## Detail description about Code: Challenging part
+
+`Jumping`
+  - When jump, I used animation.stop() to hold the animation.
+  - Adjusted velocity up and down to make it look like it's falling with Gravity.
+    - gravity=1, flap =16
+    - Initial valuse of velocity is 0. When `jump`, velocity= flap, and gravity is added until the runner touch the ground.
+    - Since it works with frame, sometimes it can get lower than the ground, so I also adjust the position of y, and make the velocity 0, make animation play()
+    - checked jump_count to make it possible unitl twice
+  
+`Create Obstacle`
+  - Create random obstacle in every 60 frame
+  - Adjust the postion of coin in coin_array to make the coin be above the obstacle
+  - Added unique motions for each obstacle
+
+`Become Invincible`
+  - When runner overlap the 'energy'
+  - It works for 600 frame.
+
+  - Key points
+    - Speed become 1.5 x faster
+    - Size 1.25 x bigger
+      - Adjust the position again
+    - Background color changes
+      - From green to white
+    - Add bar graph to show the left time
+    - It kicks obstacle and does not lose life
+       - obstacle moves from left to right with some rotation. (used velocity x,y)
+  
+
+**+ I drawed every illust used in this game.**
 
 ## Acknowledge any help
 - I used p5.play library. I got help from examples in p5.play
