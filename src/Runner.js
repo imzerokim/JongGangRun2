@@ -5,7 +5,7 @@ import sizeup from '../data/sizeup.mp3';
 import hit from '../data/hit.mp3';
 
 class Runner extends Subject {
-  constructor(totlife){
+  constructor(){
     super();
     //initial runner ground position y
     this.gnd = 426;
@@ -26,18 +26,6 @@ class Runner extends Subject {
 
     this.gravity = 1;
     this.flap = -16;
-
-    this.totLife =totlife;
-    this.reload();
-  }
-  //init runner
-  reload(){
-    this.life=[],
-    this.remainingLife=this.totLife;
-    this.notifySubscribers('runner', this.x, this.y, this.getRemainingLife());
-  }
-  getRemainingLife(){
-    return this.remainingLife;
   }
   isHit(){
     //when runner hits obstacle change animtaion + play sound
@@ -70,7 +58,7 @@ class Runner extends Subject {
       }
       this.flicker--;
     }
-
+    
     this.runner.velocity.y+=this.gravity;
     if(this.runner.position.y>=this.gnd){
       this.runner.position.y=this.gnd;

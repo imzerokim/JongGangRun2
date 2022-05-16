@@ -4,11 +4,11 @@ import lifeImage from '../data/life.png';
 import points from '../data/points.png';
 
 class ScoreDisplay {
-  constructor(initB){
+  constructor(initLife){
     this.img=loadImage(lifeImage),
     this.point=loadImage(points),
     this.resetScore(),
-    this.setLife(initB)
+    this.setLife(initLife)
   }
   resetScore(){
     this.score=0;
@@ -35,8 +35,8 @@ class ScoreDisplay {
     
   }
   update(source, ...others){
-    if(source=='runner')
-      this.setLife(others[2]);
+    //if(source=='left_life')
+      this.setLife(others[0]);
     if(source=='score'){
       this.addScore(others[0]);
     }
