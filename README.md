@@ -60,17 +60,18 @@ This is my UML.
 ![UML](data/UML.png)
 
 ### Key Class
-  `Class StateMachine`
+  >`Class StateMachine`
   - This class is in main.js
   - I used State Machine Pattern to divide the stages in game.
   - It is called in draw() and returns the next stage
-  - It has 4 stages in Total
+  - **It has 4 stages in Total**
     - Stage 0: Game starting page
     - Stage 1: Game playing page
     - Stage 2: Gmae play end. Pause and show `checkpoint` button
     - Stage 3: Show the points and grade
   
-  `Class Runner`
+
+  >`Class Runner`
   - This class is for the character `runner`
   - Define properties of runner using p5.play
   - Create functions
@@ -78,15 +79,18 @@ This is my UML.
     - jump() :
     - isHit() : Change animation
   
-  `Class Target`
+
+  >`Class Target`
   - This class is for adding properties of characters except runner.
   
-  `Class ScoreDisplay`
+
+  >`Class ScoreDisplay`
   - This class draws the `point` and `Life`
   - It is keep updated by the observer
 
 
-I used p5.play to make detailed motions, such as running or changing frames. Also, I used to check collision and overlaping.
+
+I used **p5.play library** to make detailed motions, such as running or changing frames. Also, I used to check collision and overlaping.
 
 This example shows how I defined the properties using p5.play.
 
@@ -122,7 +126,7 @@ class Coin extends Target {
   - When runner overlap the 'energy'
   - It works for 600 frame.
 
-  - Key points
+  - **Key points**
     - Speed become 1.5 x faster
     - Size 1.25 x bigger
       - Adjust the position again
