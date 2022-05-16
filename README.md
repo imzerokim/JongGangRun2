@@ -1,7 +1,7 @@
-# JongGangRun Game Document 🚀
-## PROJECT 1 - Software Prototyping ID311
+# JongGangRun Game Document 🎉
+> PROJECT 1 - Software Prototyping ID311
 
-- **Name:** Nayeong Kim
+- **Name:** Nayeong Kimv
 
 - **Student ID:** 20180057
 
@@ -26,13 +26,14 @@ A lot of obstacles such as exams and assignments, make students hard to finish t
   - You can kick off the obstacles!
 - Runner can earn `points` (10 points for each coin)
   - Depending on the point score, runner gets grade (From A+ to F)
-    - If point is
-      - less than 1000 → F
-      - more than 1000, less than 3000 → D
-      - more than 3000, less than 6000 → C
-      - more than 6000, less than 7000 → B
-      - more than 7000, less than 8000 → A
-      - more than 8000 → A+
+    
+    If point is
+    - less than 1000 → F
+    - more than 1000, less than 3000 → D
+    - more than 3000, less than 6000 → C
+    - more than 6000, less than 7000 → B
+    - more than 7000, less than 8000 → A
+    - more than 8000 → A+
 
 >How To win 😊
 
@@ -40,7 +41,24 @@ A lot of obstacles such as exams and assignments, make students hard to finish t
 
   If so, you can get a good grade!
 
+### Game GUI
+The GUI looks like this.
 
+>Start Page
+
+![UML](data/stage0.png)
+
+>Game Page
+
+![UML](data/stage1.png)
+
+>Game Over
+
+![UML](data/stage2.png)
+
+>Check Grade
+
+![UML](data/stage3.png)
 
 ### Introducing Characters In Game
 
