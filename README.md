@@ -29,10 +29,15 @@ A lot of obstacles such as exams and assignments, make students hard to finish t
     > GRADE
 
     A+ : point > 8000
+
     A : 8000 >= point > 7000
+
     B : 7000 >= point > 6000
+
     C : 6000 >= point > 3000
+
     D : 3000 >= point > 1000
+    
     F : 1000 >= point
     
 
