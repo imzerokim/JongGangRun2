@@ -1,4 +1,4 @@
-# P5.js-vite Starter Template 🚀
+# JongGangRun Game Document 🚀
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 

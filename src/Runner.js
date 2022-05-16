@@ -5,7 +5,7 @@ import sizeup from '../data/sizeup.mp3';
 import hit from '../data/hit.mp3';
 
 class Runner extends Subject {
-  constructor(tot){
+  constructor(totlife){
     super();
     //initial runner ground position y
     this.gnd = 426;
@@ -27,7 +27,7 @@ class Runner extends Subject {
     this.gravity = 1;
     this.flap = -16;
 
-    this.totLife =tot;
+    this.totLife =totlife;
     this.reload();
   }
   //init runner
@@ -70,6 +70,7 @@ class Runner extends Subject {
       }
       this.flicker--;
     }
+
     this.runner.velocity.y+=this.gravity;
     if(this.runner.position.y>=this.gnd){
       this.runner.position.y=this.gnd;

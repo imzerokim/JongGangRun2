@@ -1,8 +1,5 @@
-import { Subject } from './Subject';
-
 class Target {
   constructor(velocity){
-    // super();
     this.target= createSprite(800, 482);
     this.target.velocity.x = -6*velocity;
     this.target.scale=0.1;
