@@ -1,10 +1,10 @@
 import { Subject } from './Subject';
 
-class Target extends Subject {
-  constructor(v){
-    super();
+class Target {
+  constructor(velocity){
+    // super();
     this.target= createSprite(800, 482);
-    this.target.velocity.x = -6*v;
+    this.target.velocity.x = -6*velocity;
     this.target.scale=0.1;
     this.isCollisionChecked = false;
     this.name="";
@@ -32,21 +32,19 @@ class Target extends Subject {
 }
 
 class Energy extends Target {
-  constructor(v){
-      super(v);
+  constructor(velocity){
+      super(velocity);
       this.target.addAnimation('energy','data/energy.png','data/energy2.png','data/energy2.png','data/energy.png');
       this.target.scale=0.13;
       this.target.position.x= 1112;
       this.target.position.y=450;
       this.name="energy";
-      this.s=0;
-      this.z=1;
   }
 }
 
 class Coin extends Target {
-  constructor(v){
-      super(v);
+  constructor(velocity){
+      super(velocity);
       this.target.addAnimation("coin_img",'data/coin.png');
       this.target.setCollider('circle', 0,0,60);
       this.target.position.x= 1112;
@@ -55,21 +53,21 @@ class Coin extends Target {
 }
 
 class Covid extends Target {
-    constructor(v){
-      super(v);
+    constructor(velocity){
+      super(velocity);
       this.target.addAnimation('pass','data/COVID.png');
       this.target.addAnimation('hit','data/COVID.png','data/redcovid.png','data/redcovid.png','data/COVID.png');
       this.target.changeAnimation('pass');
       this.target.position.x= 960;
       this.target.position.y=480;
-      this.target.velocity.x = -6*1.8*v;
+      this.target.velocity.x = -6*1.8*velocity;
       this.name="covid";
     }
   }
 
 class Test extends Target {
-  constructor(v){
-    super(v);
+  constructor(velocity){
+    super(velocity);
     this.target.addAnimation('pass','data/test0.png','data/test1.png','data/test2.png','data/test3.png','data/test4.png','data/test5.png','data/test6.png','data/test7.png');
     this.target.addAnimation('hit','data/test.png','data/redtest.png','data/redtest.png','data/test.png');
     this.target.rotation=15;
@@ -80,8 +78,8 @@ class Test extends Target {
 }
 
 class Quiz extends Target {
-  constructor(v){
-    super(v);
+  constructor(velocity){
+    super(velocity);
     this.target.addAnimation('pass','data/quiz.png');
     this.target.addAnimation('hit','data/quiz.png','data/redquiz.png','data/redquiz.png','data/quiz.png');
     this.target.changeAnimation('pass');
@@ -92,8 +90,8 @@ class Quiz extends Target {
   }
 }
 class Hw extends Target {
-  constructor(v){
-    super(v);
+  constructor(velocity){
+    super(velocity);
     this.target.addAnimation('pass','data/hw.png');
     this.target.addAnimation('hit','data/hw.png','data/redhw.png','data/redhw.png','data/hw.png');
     this.target.changeAnimation('pass');
@@ -103,8 +101,8 @@ class Hw extends Target {
   }
 }
 class Computer extends Target {
-  constructor(v){
-    super(v);
+  constructor(velocity){
+    super(velocity);
     this.target.addAnimation('pass','data/computer.png','data/computer.png','data/cp2.png','data/computer.png','data/computer.png');
     this.target.addAnimation('hit','data/computer.png','data/redcp.png','data/redcp.png','data/computer.png');
     this.target.changeAnimation('pass');
@@ -116,8 +114,8 @@ class Computer extends Target {
   }
 }
 class Soju extends Target {
-  constructor(v){
-    super(v);
+  constructor(velocity){
+    super(velocity);
     this.target.addAnimation('pass','data/Soju.png','data/Soju0.png','data/Soju.png');
     this.target.addAnimation('hit','data/Soju.png','data/redsoju.png','data/redsoju.png','data/Soju.png');
     this.target.changeAnimation('pass');
