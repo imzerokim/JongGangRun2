@@ -26,6 +26,7 @@ A lot of obstacles such as exams and assignments, make students hard to finish t
   - You can kick off the obstacles!
 - Runner can earn `points` (10 points for each coin)
   - Depending on the point score, runner gets grade (From A+ to F)
+    
     **GRADE**
 
     A+ : point > 8000
