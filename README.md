@@ -128,7 +128,7 @@ class Coin extends Target {
 }
 ```
 
-**I drawed every sketch used in this game. **
+**I drawed every illust used in this game.**
 
 ## Acknowledge any help
 - I used p5.play library. I got help from examples in p5.play

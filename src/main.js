@@ -93,7 +93,6 @@ class StateMachine {
     this.end_condition=false;
   }
 }
-
 class Stage0 extends StateMachine{
   constructor(){
     super();
@@ -329,6 +328,9 @@ class Stage1 extends StateMachine{
   }
 }
 class Stage2 extends StateMachine{
+  constructor(){
+    super();
+  }
   execute(){
     imageMode(CENTER);
     image(check_point,400,300,201*0.97,40*0.97);
@@ -345,6 +347,9 @@ class Stage2 extends StateMachine{
   }
 }
 class Stage3 extends StateMachine{
+  constructor(){
+    super();
+  }
   execute(){
     background(255);
     noStroke();

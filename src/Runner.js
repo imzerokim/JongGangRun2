@@ -1,12 +1,9 @@
-import { Subject } from './Subject';
-
 import jump from '../data/jump.mp3';
 import sizeup from '../data/sizeup.mp3';
 import hit from '../data/hit.mp3';
 
-class Runner extends Subject {
+class Runner {
   constructor(){
-    super();
     //initial runner ground position y
     this.gnd = 426;
 
