@@ -26,14 +26,15 @@ A lot of obstacles such as exams and assignments, make students hard to finish t
   - You can kick off the obstacles!
 - Runner can earn `points` (10 points for each coin)
   - Depending on the point score, runner gets grade (From A+ to F)
+    > GRADE
+
+    A+ : point > 8000
+    A : 8000 >= point > 7000
+    B : 7000 >= point > 6000
+    C : 6000 >= point > 3000
+    D : 3000 >= point > 1000
+    F : 1000 >= point
     
-    If point is
-    - less than 1000 → F
-    - more than 1000, less than 3000 → D
-    - more than 3000, less than 6000 → C
-    - more than 6000, less than 7000 → B
-    - more than 7000, less than 8000 → A
-    - more than 8000 → A+
 
 >How To win 😊
 
@@ -181,7 +182,7 @@ I especially used these features.
   - When runner overlap the 'energy'
   - It works for 600 frame.
 
-  - **Key points**
+  **Key points**
     - Speed become 1.5 x faster
     - Size 1.25 x bigger
       - Adjust the position again
